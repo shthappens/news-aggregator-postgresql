@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Slacker News Aggregator</title>
+  </head>
+
+  <body>
+    <h2>Slacker News</h2>
+    <h3>Submit your favorite Slacker News here!</h3>
+
+    <h3>
+      <% if @new_article_errors %>
+        <% @new_article_errors.each do |error| %>
+          <%=error %>
+        <% end %>
+      <% end %>
+    </h3>
+
+    <form action="/articles/new" method="post">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" value="<%=params["title"] %>">
+
+      <label for="url">URL:</label>
+      <input type="url" pattern="https?://.+" id="url" name="url" value="<%=params["url"] %>">
+
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" value="<%=params["description"] %>">
+
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>
